@@ -1,16 +1,22 @@
+/**
+ * Le Bureau Connecté - Component System
+ * Copyright (c) 2024 Le Bureau Connecté. All rights reserved.
+ * 
+ * This code is proprietary and confidential.
+ * Unauthorized copying, modification, or distribution is strictly prohibited.
+ * 
+ * Contact: 514-582-4850
+ * Address: 7591 St-Michel, Montreal, H2A 3A4
+ */
+
 // Component loader utility for shared headers and footers
 function loadComponent(elementId, componentPath) {
     fetch(componentPath)
         .then(response => response.text())
         .then(data => {
             document.getElementById(elementId).innerHTML = data;
-            
-            // Re-initialize event listeners after loading components
             initializeNavigation();
-            
-            // Re-initialize language system if it exists
             if (window.languageSwitcher) {
-                // Wait a bit for DOM to be ready
                 setTimeout(() => {
                     window.languageSwitcher.setupToggle();
                     window.languageSwitcher.applyTranslations();
@@ -22,21 +28,17 @@ function loadComponent(elementId, componentPath) {
         });
 }
 
-// Initialize navigation functionality
 function initializeNavigation() {
-    // Mobile menu toggle - PRODUCTION VERSION
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
     if (mobileToggle && navMenu) {
-        // Remove existing listeners to prevent duplicates
         mobileToggle.replaceWith(mobileToggle.cloneNode(true));
         const newMobileToggle = document.querySelector('.mobile-toggle');
         
         newMobileToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             
-            // Change icon
             if (navMenu.classList.contains('active')) {
                 newMobileToggle.innerHTML = '<i class="fas fa-times"></i>';
             } else {
@@ -44,7 +46,6 @@ function initializeNavigation() {
             }
         });
         
-        // Close menu when clicking nav links
         navMenu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
@@ -53,7 +54,6 @@ function initializeNavigation() {
         });
     }
 
-    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -68,7 +68,6 @@ function initializeNavigation() {
     });
 }
 
-// Header scroll effect
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     if (header) {
@@ -82,23 +81,18 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Load components when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on the homepage or a subpage
     const isHomepage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html');
     
-    // Load appropriate header
     if (document.getElementById('header-placeholder')) {
         const headerPath = isHomepage ? './includes/header-home.html' : '../includes/header.html';
         loadComponent('header-placeholder', headerPath);
     }
     
-    // Load appropriate footer
     if (document.getElementById('footer-placeholder')) {
         const footerPath = isHomepage ? './includes/footer.html' : '../includes/footer-subpage.html';
         loadComponent('footer-placeholder', footerPath);
     }
     
-    // Initialize navigation if components are already loaded
     initializeNavigation();
 });

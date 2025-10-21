@@ -1,3 +1,17 @@
+/**
+ * Le Bureau Connecté - Language Switcher System
+ * 
+ * Copyright (c) 2024 Le Bureau Connecté. All rights reserved.
+ * 
+ * This software is proprietary and confidential. Unauthorized copying, distribution,
+ * modification, public display, or public performance of this software, in whole or 
+ * in part, is strictly prohibited without the prior written consent of Le Bureau Connecté.
+ * 
+ * For licensing inquiries, contact: sadokdiba@icloud.com
+ * 
+ * UNAUTHORIZED USE IS PROHIBITED AND MAY RESULT IN LEGAL ACTION.
+ */
+
 // Language Switcher System with JSON translations
 class LanguageSwitcher {
     constructor() {

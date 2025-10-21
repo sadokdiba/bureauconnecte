@@ -1,219 +1,150 @@
-<div align="center">
-  
-# 🏢 Le Bureau Connecté
+# Le Bureau Connecté - Website
 
-### *Professional Office Solutions & Printing Services in Montreal*
+A professional bilingual (EN/FR) business website built with vanilla HTML5, CSS3, and JavaScript. Features a modular component system and JSON-based translation management.
 
-</div>
+## 🚀 Live Demo
+**Website:** [https://sadokdiba.github.io/bureauconnecte/](https://sadokdiba.github.io/bureauconnecte/)
 
-**Keep your site modular and DRY (Don't Repeat Yourself)**
+## 🛠️ Tech Stack
 
-### Step 1: Add placeholders in your HTML pages
-```html
-<div id="header-placeholder"></div>
-<!-- Your page content here -->
-<div id="footer-placeholder"></div>
-```
-
-### Step 2: Include the component loader
-```html
-<script src="../assets/js/components.js"></script>
-```
-
-✨ **That's it!** The system will automatically load the correct header and footer for each page.
-
----mg.shields.io/badge/Website-Visit%20Live-brightgreen?style=for-the-badge&logo=world&logoColor=white)](https://sadokdiba.github.io/bureauconnecte/)
-[![Location](https://img.shields.io/badge/📍%20Montreal-Saint--Michel%20Metro-blue?style=for-the-badge)](https://maps.google.com)
-[![Phone](https://img.shields.io/badge/📞%20Call-514--582--4850-red?style=for-the-badge)](tel:5145824850)
-
----
-
-*A modern, bilingual (English/French) website for Le Bureau Connecté, your trusted office assistance partner located near Saint-Michel Metro, Montreal.*
-
-</div>
-
-## ✨ Key Features
-<table>
-<tr>
-<td width="50%">
-
-### 🌍 **Bilingual Experience**
-- 🔄 Smart EN/FR translation system using JSON files
-- 🎯 Automatic language detection with welcome modal
-- 💾 Language preference persistence via localStorage
-- 🎨 Elegant language toggle in header
-
-</td>
-<td width="50%">
-
-### 🎨 **Modern & Responsive Design**
-- 📱 Professional, mobile-first layout
-- 🎨 Clean typography with consistent green branding
-- ✨ Smooth CSS transitions and animations
-- 🔍 SEO-optimized semantic HTML structure
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### ⚙️ **Technical Excellence**
-- 🧩 Component-based architecture
-- 🔧 Modular, maintainable JavaScript (ES6+)
-- ⚡ Fast performance with zero dependencies
-- 📁 Organized folder structure for scalability
-
-</td>
-<td width="50%">
-
-### 💎 **Professional Quality**
-- 🏆 Industry-standard coding practices
-- 🎯 User-centric design approach
-- 🚀 Optimized loading performance
-- 🔒 Secure and reliable architecture
-
-</td>
-</tr>
-</table>
+- **Frontend:** Vanilla HTML5, CSS3, JavaScript ES6+
+- **Translation System:** JSON files with localStorage persistence  
+- **Architecture:** Component-based modular design
+- **Styling:** Custom CSS with responsive design
+- **Icons:** Font Awesome 6.4.0
+- **Fonts:** Google Fonts (Inter, Poppins)
 
 ## 📂 Project Structure
 
 ```
-bureauconnecte/
-├── 🏠 index.html                    # Homepage
-├── 📄 pages/
-│   └── about.html                   # About page  
-├── 🎨 assets/
+bureau-connecté/
+├── index.html                    # Homepage
+├── pages/
+│   └── about.html               # About page
+├── assets/
 │   ├── css/
-│   │   └── styles.css               # Main stylesheet
+│   │   └── styles.css           # Main stylesheet
 │   ├── js/
-│   │   ├── script.js                # Main JavaScript
-│   │   ├── language-switcher.js     # Bilingual system
-│   │   └── components.js            # Header/Footer loader
-│   ├── 🌐 translations/
-│   │   ├── en.json                  # English translations
-│   │   └── fr.json                  # French translations
-│   └── 🖼️ images/
-│       └── logo.png                 # Business logo
-├── 📦 includes/
-│   ├── header-home.html             # Header for homepage
-│   ├── header.html                  # Header for subpages
-│   ├── footer.html                  # Footer for homepage
-│   └── footer-subpage.html          # Footer for subpages
-└── 📖 README.md                     # Documentation
+│   │   ├── components.js        # Component loader system
+│   │   └── language-switcher.js # Bilingual translation system
+│   ├── translations/
+│   │   ├── en.json             # English translations
+│   │   └── fr.json             # French translations
+│   └── images/
+│       ├── logo.png            # Business logo
+│       └── favicon.ico         # Site favicon
+├── includes/                    # Shared HTML components
+│   ├── header-home.html        # Homepage header
+│   ├── header.html             # Subpage header
+│   ├── footer.html             # Homepage footer
+│   └── footer-subpage.html     # Subpage footer
+└── LICENSE                     # Copyright protection
 ```
 
-## 💼 Our Services
+## ⚙️ Key Features
 
-<div align="center">
+### 🌍 Bilingual System
+- Automatic language detection with welcome modal
+- JSON-based translations for easy content management
+- localStorage persistence for user language preference
+- Seamless EN/FR switching without page reload
 
-| Service | Description | Features |
-|---------|-------------|----------|
-| 🖨️ **Printing Services** | High-quality document printing | • Business cards, flyers, posters<br>• Professional document formatting<br>• Color & B&W options |
-| 📄 **Copying & Scanning** | Fast, reliable document services | • Multi-format copying<br>• Digital scanning<br>• Document preparation |
-| 💻 **Office Assistance** | Personalized office support | • Computer and software help<br>• Document formatting<br>• Administrative support |
-| 📋 **Document Services** | Professional editing & layout | • Document editing and layout<br>• Administrative support<br>• Custom formatting solutions |
+### 🧩 Component Architecture
+- Modular header/footer system using JavaScript injection
+- DRY principle implementation for shared components
+- Automatic component loading based on page context
 
-</div>
+### � Responsive Design
+- Mobile-first approach with desktop enhancement
+- Transparent glass navigation effects on mobile
+- Smooth CSS transitions and professional animations
 
-## 🛠️ Tech Stack
-
-<div align="center">
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Font Awesome](https://img.shields.io/badge/Font%20Awesome-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
-![Google Fonts](https://img.shields.io/badge/Google%20Fonts-4285F4?style=for-the-badge&logo=google&logoColor=white)
-
-</div>
-
-| Technology | Usage | Version |
-|------------|-------|---------|
-| **Frontend** | HTML5, CSS3, JavaScript (ES6+) | Latest |
-| **Translation System** | JSON-based with localStorage persistence | Custom |
-| **Icons** | Font Awesome | 6.4.0 |
-| **Fonts** | Google Fonts (Inter, Poppins) | Latest |
-| **Architecture** | Component-based modular design | Custom |
-
-🧩 Using Shared Components
-
-To keep the site modular and DRY (Don’t Repeat Yourself):
-
-Add placeholders in your HTML pages:
-
-<div id="header-placeholder"></div>
-
-<!-- Page content here -->
-
-<div id="footer-placeholder"></div>
-
-
-Include the component loader:
-
-<script src="../assets/js/components.js"></script>
-
-
-This will automatically load the correct header and footer for each page.
-
-## � Development
+## � Development Setup
 
 ### Quick Start
 ```bash
 # Clone the repository
 git clone https://github.com/sadokdiba/bureauconnecte.git
-
-# Navigate into the project directory
 cd bureauconnecte
 
-# Start a local server (Choose one option)
-
-# Option 1: Python 3
-python3 -m http.server 8080
-
-# Option 2: Node.js
-npx http-server -p 8080
-
-# Option 3: PHP
-php -S localhost:8080
+# Start local development server (choose one)
+python3 -m http.server 8080        # Python
+npx http-server -p 8080            # Node.js
+php -S localhost:8080              # PHP
 ```
 
-🌐 **Open your browser at:** [http://localhost:8080](http://localhost:8080)
+Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-### 🧪 Testing the Language Prompt
+### Component System Usage
+
+Add placeholders in your HTML:
+```html
+<div id="header-placeholder"></div>
+<!-- Your page content -->
+<div id="footer-placeholder"></div>
+```
+
+Include the component loader:
+```html
+<script src="../assets/js/components.js"></script>
+```
+
+The system automatically loads the correct components for each page.
+
+### Translation System
+
+Add translatable content with `data-translate` attributes:
+```html
+<h1 data-translate="welcome.title">Welcome</h1>
+<p data-translate="about.description">About us...</p>
+```
+
+Translations are managed in JSON files:
+```json
+// assets/translations/en.json
+{
+  "welcome": {
+    "title": "Welcome to Le Bureau Connecté"
+  },
+  "about": {
+    "description": "Professional office solutions in Montreal"
+  }
+}
+```
+
+### Development Tools
+
+Reset language prompt for testing:
 ```javascript
-// Run in the browser console to reset language settings
+// Run in browser console
 localStorage.removeItem('languagePrompted');
 localStorage.removeItem('selectedLanguage');
 location.reload();
 ```
 
+## � Customization
+
+### Adding New Pages
+1. Create HTML file with component placeholders
+2. Add translations to JSON files
+3. Update navigation in header components
+
+### Styling
+- Main styles: `assets/css/styles.css`
+- CSS custom properties for consistent theming
+- Mobile-first responsive breakpoints
+
+### Adding New Languages
+1. Create new JSON file in `assets/translations/`
+2. Update language options in `language-switcher.js`
+3. Add language toggle buttons in header components
+
 ---
 
-## 📍 Visit Us
-
-<div align="center">
-
-### 🏢 **Le Bureau Connecté**
-
-📍 **Address:** 7591 St-Michel, Montreal, H2A 3A4  
-🚇 **Metro:** Near Saint-Michel Metro Station  
-📞 **Phone:** [514-582-4850](tel:5145824850)  
-💬 **WhatsApp:** [Chat with Us](https://wa.me/15145824850)
-
-[![Google Maps](https://img.shields.io/badge/📍%20Find%20Us%20on-Google%20Maps-red?style=for-the-badge&logo=googlemaps&logoColor=white)](https://maps.google.com)
-
-</div>
-
----
-
-<div align="center">
-
-## 📄 License
+## 📄 License & Copyright
 
 **© 2024 Le Bureau Connecté. All rights reserved.**
 
-[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red?style=for-the-badge)](https://github.com/sadokdiba)
-[![Montreal](https://img.shields.io/badge/🏙️%20Made%20in-Montreal-blue?style=for-the-badge)](https://montreal.ca)
+This project and all its contents are proprietary and confidential. See [LICENSE](./LICENSE) file for complete terms.
 
-</div>
+For licensing inquiries: sadokdiba@icloud.com
