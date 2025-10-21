@@ -24,7 +24,7 @@ function loadComponent(elementId, componentPath) {
 
 // Initialize navigation functionality
 function initializeNavigation() {
-    // Mobile menu toggle
+    // Mobile menu toggle - PRODUCTION VERSION
     const mobileToggle = document.querySelector('.mobile-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -33,8 +33,23 @@ function initializeNavigation() {
         mobileToggle.replaceWith(mobileToggle.cloneNode(true));
         const newMobileToggle = document.querySelector('.mobile-toggle');
         
-        newMobileToggle.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        newMobileToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            if (navMenu.classList.contains('active')) {
+                newMobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                newMobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close menu when clicking nav links
+        navMenu.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                newMobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
         });
     }
 

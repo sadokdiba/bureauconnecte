@@ -19,15 +19,11 @@ class LanguageSwitcher {
     
     async loadTranslations() {
         try {
-            // Determine if we're on a subpage or homepage
             const isSubpage = window.location.pathname.includes('/pages/');
             const basePath = isSubpage ? '../assets/translations/' : './assets/translations/';
-            
-            // Load English translations
             const enResponse = await fetch(basePath + 'en.json');
             const enTranslations = await enResponse.json();
             
-            // Load French translations  
             const frResponse = await fetch(basePath + 'fr.json');
             const frTranslations = await frResponse.json();
             
@@ -37,7 +33,6 @@ class LanguageSwitcher {
             };
         } catch (error) {
             console.error('Failed to load translations:', error);
-            // Fallback translations
             this.translations = {
                 en: { home: 'Home', services: 'Services', contact: 'Contact', about: 'About' },
                 fr: { home: 'Accueil', services: 'Services', contact: 'Contact', about: 'À propos' }
@@ -54,7 +49,6 @@ class LanguageSwitcher {
     }
     
     showLanguagePrompt() {
-        // Create a beautiful custom modal instead of browser confirm
         const modal = document.createElement('div');
         modal.className = 'language-prompt-modal';
         modal.innerHTML = `
@@ -77,11 +71,7 @@ class LanguageSwitcher {
                 <small class="language-prompt-note">You can change this anytime using the toggle in the header</small>
             </div>
         `;
-        
-        // Add modal to page
         document.body.appendChild(modal);
-        
-        // Add event listeners
         modal.querySelectorAll('.language-choice-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const selectedLang = e.target.dataset.lang;
@@ -91,11 +81,8 @@ class LanguageSwitcher {
                 modal.remove();
             });
         });
-        
-        // Close on outside click
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                // Default to English if they click outside
                 this.switchLanguage('en');
                 localStorage.setItem('languagePrompted', 'true');
                 this.hasPrompted = true;
@@ -105,16 +92,11 @@ class LanguageSwitcher {
     }
     
     setupToggle() {
-        // Find existing language toggle in header
         const toggle = document.querySelector('.language-toggle');
         if (!toggle) return;
-        
-        // Update active states
         toggle.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === this.currentLang);
         });
-        
-        // Add event listeners
         toggle.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const lang = e.target.dataset.lang;
@@ -141,34 +123,25 @@ class LanguageSwitcher {
             console.error('No translations found for language:', this.currentLang);
             return;
         }
-        
-        // Update content with data-translate attributes
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
             if (translations[key]) {
-                // Handle different element types
                 if (element.tagName === 'INPUT' && element.type === 'button') {
                     element.value = translations[key];
                 } else if (element.tagName === 'SPAN' && element.parentElement.classList.contains('whatsapp-btn')) {
-                    // For WhatsApp buttons with spans
                     element.textContent = translations[key];
                 } else if (element.tagName === 'SPAN' && element.parentElement.tagName === 'A') {
-                    // For other button spans
                     element.textContent = translations[key];
                 } else {
                     element.textContent = translations[key];
                 }
             } else {
-                console.warn(`Translation missing for key: ${key} in language: ${this.currentLang}`);
             }
         });
-        
-        // Legacy support for existing content
         this.updateLegacyContent(translations);
     }
     
     updateLegacyContent(translations) {
-        // Navigation
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             const text = link.textContent.trim();
@@ -182,8 +155,6 @@ class LanguageSwitcher {
                 link.textContent = translations.about;
             }
         });
-        
-        // Hero section
         const heroTitle = document.querySelector('.hero h1');
         if (heroTitle) heroTitle.textContent = translations.heroTitle;
         
@@ -192,8 +163,6 @@ class LanguageSwitcher {
         
         const heroDescription = document.querySelector('.hero-description');
         if (heroDescription) heroDescription.textContent = translations.heroDescription;
-        
-        // Update all buttons
         const callBtn = document.querySelector('.btn-primary');
         if (callBtn && (callBtn.textContent.includes('Call') || callBtn.textContent.includes('Appelez'))) {
             callBtn.innerHTML = `<i class="fas fa-phone"></i> ${translations.callUs}`;
@@ -203,15 +172,11 @@ class LanguageSwitcher {
         whatsappBtns.forEach(btn => {
             btn.innerHTML = `<i class="fab fa-whatsapp"></i> ${translations.whatsapp}`;
         });
-        
-        // Services section
         const servicesTitle = document.querySelector('#services .section-title, .services-preview .section-title');
         if (servicesTitle) servicesTitle.textContent = translations.servicesTitle;
         
         const servicesSubtitle = document.querySelector('#services .section-subtitle, .services-preview .section-subtitle');
         if (servicesSubtitle) servicesSubtitle.textContent = translations.servicesSubtitle;
-        
-        // Service cards
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach((card, index) => {
             const title = card.querySelector('h3');
@@ -231,15 +196,11 @@ class LanguageSwitcher {
                 desc.textContent = translations.documentDesc;
             }
         });
-        
-        // Contact section
         const contactTitle = document.querySelector('.contact-info h2');
         if (contactTitle) contactTitle.textContent = translations.contactTitle;
         
         const contactDesc = document.querySelector('.contact-info .hero-description');
         if (contactDesc) contactDesc.textContent = translations.contactDescription;
-        
-        // Contact items
         const contactItems = document.querySelectorAll('.contact-item');
         contactItems.forEach(item => {
             const title = item.querySelector('h4');
@@ -254,8 +215,6 @@ class LanguageSwitcher {
                 }
             }
         });
-        
-        // About page
         const pageTitle = document.querySelector('.page-header h1');
         if (pageTitle) pageTitle.textContent = translations.aboutPageTitle;
         
@@ -274,15 +233,11 @@ class LanguageSwitcher {
         
         const missionText = document.querySelector('.about-highlight p');
         if (missionText) missionText.textContent = `"${translations.missionText}"`;
-        
-        // Values section
         const valuesTitle = document.querySelector('.values-section .section-title');
         if (valuesTitle) valuesTitle.textContent = translations.valuesTitle;
         
         const valuesSubtitle = document.querySelector('.values-section .section-subtitle');
         if (valuesSubtitle) valuesSubtitle.textContent = translations.valuesSubtitle;
-        
-        // Value cards
         const valueCards = document.querySelectorAll('.value-card');
         valueCards.forEach((card, index) => {
             const title = card.querySelector('h3');
@@ -302,15 +257,11 @@ class LanguageSwitcher {
                 desc.textContent = translations.communityFocusDesc;
             }
         });
-        
-        // Why Choose Us section
         const whyChooseTitle = document.querySelector('.why-choose .section-title');
         if (whyChooseTitle) whyChooseTitle.textContent = translations.whyChooseTitle;
         
         const whyChooseSubtitle = document.querySelector('.why-choose .section-subtitle');
         if (whyChooseSubtitle) whyChooseSubtitle.textContent = translations.whyChooseSubtitle;
-        
-        // Feature items
         const featureItems = document.querySelectorAll('.feature-item');
         featureItems.forEach((item, index) => {
             const title = item.querySelector('h4');
@@ -336,28 +287,20 @@ class LanguageSwitcher {
                 desc.textContent = translations.personalTouchDesc;
             }
         });
-        
-        // Coming Soon section
         const comingSoonTitle = document.querySelector('.coming-soon .section-title, .coming-soon h2');
         if (comingSoonTitle) comingSoonTitle.textContent = translations.comingSoonTitle;
         
         const comingSoonSubtitle = document.querySelector('.coming-soon .section-subtitle, .coming-soon p');
         if (comingSoonSubtitle) comingSoonSubtitle.textContent = translations.comingSoonSubtitle;
-        
-        // CTA section
         const ctaTitle = document.querySelector('.cta-section h2');
         if (ctaTitle) ctaTitle.textContent = translations.ctaTitle;
         
         const ctaSubtitle = document.querySelector('.cta-section p');
         if (ctaSubtitle) ctaSubtitle.textContent = translations.ctaSubtitle;
-        
-        // Footer
         const copyright = document.querySelector('.footer-bottom p');
         if (copyright) copyright.textContent = translations.copyright;
     }
 }
-
-// Initialize and expose globally
 document.addEventListener('DOMContentLoaded', () => {
     window.languageSwitcher = new LanguageSwitcher();
 });

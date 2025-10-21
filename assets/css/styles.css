@@ -134,6 +134,18 @@ a {
     font-size: 1.5rem;
     color: var(--primary-green);
     cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius);
+    transition: all var(--transition);
+}
+
+.mobile-toggle:hover {
+    background: var(--soft-green);
+    transform: scale(1.1);
+}
+
+.mobile-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Language Toggle */
@@ -982,23 +994,143 @@ a {
 @media (max-width: 768px) {
     .mobile-toggle {
         display: block;
+        z-index: 1002;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
     }
     
     .nav-menu {
-        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        box-shadow: var(--shadow-medium);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        z-index: 1001;
+    }
+    
+    .nav-menu.active {
+        max-height: 300px;
+        padding: 20px 0;
+        opacity: 1;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 15px 20px;
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        background: transparent;
+        transition: all var(--transition);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: rgba(45, 90, 61, 0.1);
+        color: var(--primary-green);
     }
     
     .language-toggle {
         position: absolute;
-        top: 70px;
-        right: 20px;
-        z-index: 1001;
+        top: 15px;
+        right: 60px;
+        scale: 0.9;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+    }
+}
+
+@media (max-width: 500px) {
+    /* Stack logo text vertically - KEEP SAME SIZE */
+    .logo-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+        text-align: left;
+        /* Keep original font size, don't make smaller */
     }
     
-    .lang-btn {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+    .logo-line1, .logo-line2 {
+        display: block;
     }
+    
+    .language-toggle {
+        position: absolute;
+        top: 12px;
+        right: 60px;
+        scale: 0.75;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+    }
+    
+    .mobile-toggle {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+    }
+    
+    .nav-menu {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+    }
+    
+    .navbar {
+        padding: 10px 0;
+        align-items: flex-start;
+    }
+    
+    .logo {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 350px) {
+    .language-toggle {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(45, 90, 61, 0.2);
+    }
+    
+    .mobile-toggle {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(45, 90, 61, 0.2);
+    }
+    
+    .nav-menu {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+    }
+    
+    .language-toggle {
+        top: 15px;
+        right: 55px;
+        scale: 0.7;
+    }
+}
     
     .hero h1 {
         font-size: 2.5rem;
